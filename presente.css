@@ -133,6 +133,7 @@ header{
     top: -10px;
     font-size: .5em;
     cursor: default;
+    z-index: 0;
 }
 .tudo_preco {
     position: relative;
@@ -143,6 +144,7 @@ header{
     margin: 10px 0;
     font-weight: 500;
     cursor: default;
+    z-index: 0;
 }
 
 .add-to-cart {
