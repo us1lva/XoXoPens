@@ -331,7 +331,7 @@ footer ul li{
     .add-to-cart{
         font-size: 0.8em;
         width: 150px;
-        margin-left: 3px;
+        margin-left: -3px;
     }
     .product img{
         width: 150px;
