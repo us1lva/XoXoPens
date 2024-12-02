@@ -106,12 +106,14 @@ header{
     color: white;
     padding-left: 65px;
     padding-top: 13px;
+    cursor: default;
 }
 #maior p{
     font-size: 24px;
     color: white;
     max-width: 26ch;
     padding-left: 64px;
+    cursor: default;
 }
 
 .animate-charcter
@@ -169,6 +171,7 @@ header{
     padding-top: 30px;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+    cursor: default;
 }
 .menor{
     background-image: url(image/mundo.jpg);
@@ -183,6 +186,7 @@ header{
     padding-top: 30px;
     color: white;
     font-family: Arial, Helvetica, sans-serif ;
+    cursor: default;
 }
 
 h4 {
@@ -219,10 +223,12 @@ footer{
 footer h5{
     font-size: 20px;
     text-align: center;
+    cursor: default;
 }
 footer ul li{
     padding-top: 10px;
     text-align: center;
+    cursor: default;
 }
 
 .lista2{
