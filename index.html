@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+
+    <title>Bellaxoxo</title>
+</head>
+<body>
+    <header>
+            
+        <div class="logo" ><a href="index.html">Bellaxoxo</a></div>
+        <div class='pens'>
+            <div class='line'></div>
+            <div class='line'></div>
+            <div class='line'></div>
+        </div>
+        <nav class='nav_bar'>
+            <ul>
+                <li>
+                    <a href="" class='active'>Escritas</a>
+                </li>
+                <li>
+                    <a href="">Canetas</a>
+                </li>
+                <li>
+                    <a href="presentes.html">Presentes</a>
+                </li>
+                <li>
+                    <a href="">Feedback</a>
+                </li>
+                <li>
+                    <a href="">Contato</a>
+                </li>
+                <li>
+                    <a href=""><img class="perfil" src="image/user-126.svg" alt=""></a>
+                </li>
+                <li>
+                    <a href=""><img class="cart" src="image/cart.svg" alt=""></a>
+                </li>
+            </ul>
+    
+        </nav>
+    </header>
+
+    <main>
+        <section class="slogan">
+            <div id="content">
+            
+            </div>
+        </section>
+
+        <section class="area2">
+            <div id="maior">
+                <div class="container">
+                    <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="animate-charcter"> Ideias <br> Para <br> Presentes</h3>
+                    </div>
+                    </div>
+                </div>  
+                <p>explore a diversidade e aumente sua criatividade</p>
+                <button><span><a href="presentes.html">Ver mais</a></span></button>
+            </div>
+        <div class="coluna">
+            <div class="menor">
+                <h4>Mundo colorido</h4>
+              
+            </div>
+            <div class="menor2">
+                <h4>Canetas fofas</h4>
+            </div>
+        </div>
+        </section>
+
+        <footer>
+            <ul>
+                <h5>Mapa de usuario</h5>
+                <li>Escritas</li>
+                <li>Canetas</li>
+                <li>Presentes</li>
+                <li>Feedback</li>
+                <li>Contatos</li>
+            </ul>
+            <ul class="lista2">
+                <h5>Contatos</h5>
+                <li>(11) 94526-9020</li>
+                <li>@bellaxoxo.paper</li>
+                <li>a</li>
+                <li>a</li>
+            </ul>
+            <ul class="lista2">
+                <h5>Pagamentos</h5>
+                <li>Pix</li>
+                <li>Débito</li>
+                <li>Crédito</li>
+                <li>Dinheiro</li>
+            </ul>
+        </footer>
+    </main>
+
+    <script>
+        pens = document.querySelector(".pens");
+        pens.onclick = function(){
+            navBar = document.querySelector(".nav_bar")
+            navBar.classList.toggle("active")
+        }
+    </script>
+</body>
+</html>
