@@ -265,6 +265,7 @@ footer ul li{
     }
     .nav_bar.active{
         height: 500px;
+        z-index: 1;
     }
     .nav_bar ul{
         display: block;
