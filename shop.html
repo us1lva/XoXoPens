@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="presente.css">
+    <style>
+        /* Estilo para diminuir o tamanho das imagens */
+        .cart-item img {
+            width: 80px; /* Ajuste o tamanho da imagem conforme necessário */
+            height: auto;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .item-details {
+            margin-left: 20px;
+        }
+        .item-details h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .item-details p {
+            margin: 5px 0;
+        }
+        .item-actions {
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .item-actions button {
+            padding: 5px 10px;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+        .empty-cart-message {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+            color: #ff0000;
+        }
+        .finalize-purchase-button,
+        .back-to-present-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .finalize-purchase-button:hover,
+        .back-to-present-button:hover {
+            background-color: #218838;
+        }
+        .back-to-present-button {
+            background-color: #007bff;
+        }
+        .back-to-present-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="index.html">Bellaxoxo</a></div>
+        <nav class='nav_bar'>
+            <ul>
+                <li><a href="presentes.html">Presentes</a></li>
+                <li><a href="">Escritas</a></li>
+                <li><a href="">Canetas</a></li>
+                <li><a href="shop.html" class="active"><img class="cart" src="image/cart.svg" alt="Carrinho"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="cart-container">
+            <h2>Seu Carrinho</h2>
+            <div id="cart-items">
+                <!-- Os itens do carrinho serão inseridos aqui -->
+            </div>
+            <h3>Total: R$ <span id="total-price">0,00</span></h3>
+
+            <!-- Mensagem de carrinho vazio -->
+            <div id="empty-cart-message" class="empty-cart-message" style="display: none;">
+                Seu carrinho está vazio.
+            </div>
+
+            <!-- Botão de finalizar compra -->
+            <button id="finalize-purchase" class="finalize-purchase-button" style="display: none;">Confirmar Compra</button>
+
+            <!-- Botão de voltar para a página de presentes -->
+            <button id="back-to-present" class="back-to-present-button" onclick="window.location.href='presentes.html';">Voltar para Presentes</button>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Recupera o carrinho do localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Referência ao container de itens do carrinho
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            const finalizePurchaseButton = document.getElementById('finalize-purchase');
+
+            let totalPrice = 0;
+
+            // Função para atualizar o localStorage
+            function updateLocalStorage() {
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
+            // Função para renderizar os itens do carrinho
+            function renderCart() {
+                cartItemsContainer.innerHTML = ''; // Limpar a lista de itens
+                totalPrice = 0;
+
+                // Verifica se o carrinho está vazio
+                if (cart.length === 0) {
+                    emptyCartMessage.style.display = 'block';
+                    finalizePurchaseButton.style.display = 'none';
+                    totalPriceElement.textContent = '0,00';
+                    return;
+                }
+
+                // Se o carrinho não estiver vazio, oculta a mensagem de carrinho vazio
+                emptyCartMessage.style.display = 'none';
+                finalizePurchaseButton.style.display = 'block';
+
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('cart-item');
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="item-details">
+                            <h3>${item.name}</h3>
+                            <p>Preço: R$ ${item.price.toFixed(2)}</p>
+                            <p>Quantidade: ${item.quantity}</p>
+                        </div>
+                        <div class="item-actions">
+                            <button class="add-more">Adicionar mais</button>
+                            <button class="remove-item">Remover</button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                    totalPrice += item.price * item.quantity;
+
+                    // Adicionar eventos aos botões de ação
+                    itemElement.querySelector('.add-more').addEventListener('click', function () {
+                        item.quantity++;
+                        updateLocalStorage();
+                        renderCart(); // Re-renderiza o carrinho
+                    });
+
+                    itemElement.querySelector('.remove-item').addEventListener('click', function () {
+                        if (item.quantity > 1) {
+                            item.quantity--;
+                        } else {
+                            cart = cart.filter(cartItem => cartItem.id !== item.id); // Remove o item do carrinho
+                        }
+                        updateLocalStorage();
+                        renderCart(); // Re-renderiza o carrinho
+                    });
+                });
+
+                // Exibe o preço total atualizado
+                totalPriceElement.textContent = totalPrice.toFixed(2);
+            }
+
+            // Função para finalizar a compra (pode redirecionar para o checkout)
+            finalizePurchaseButton.addEventListener('click', function () {
+                alert("Redirecionando para o checkout...");
+
+                // Aqui você pode redirecionar para outra página de checkout ou iniciar o processo de pagamento.
+                // Exemplo: window.location.href = "checkout.html";
+            });
+
+            // Inicializa a renderização do carrinho
+            renderCart();
+        });
+    </script>
+</body>
+</html>
