@@ -3,53 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Bellaxoxo</title>
     <link rel="stylesheet" href="style.css">
 
+    <!-- Carregamento assíncrono de fontes -->
+    <link rel="preload" href="path/to/font.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
-    <title>Bellaxoxo</title>
 </head>
 <body>
     <header>
-            
-        <div class="logo" ><a href="index.html">Bellaxoxo</a></div>
-        <div class='pens'>
-            <div class='line'></div>
-            <div class='line'></div>
-            <div class='line'></div>
+        <div class="logo"><a href="index.html">Bellaxoxo</a></div>
+        <div class="pens">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
         </div>
-        <nav class='nav_bar'>
+        <nav class="nav_bar">
             <ul>
-                <li>
-                    <a href="" class='active'>Escritas</a>
-                </li>
-                <li>
-                    <a href="">Canetas</a>
-                </li>
-                <li>
-                    <a href="presentes.html">Presentes</a>
-                </li>
-                <li>
-                    <a href="">Feedback</a>
-                </li>
-                <li>
-                    <a href="">Contato</a>
-                </li>
-                <li>
-                    <a href=""><img class="perfil" src="image/user-126.svg" alt=""></a>
-                </li>
-                <li>
-                    <a href="shop.html"><img class="cart" src="image/cart.svg" alt=""></a>
-                </li>
+                <li><a href="" class="active">Escritas</a></li>
+                <li><a href="">Canetas</a></li>
+                <li><a href="presentes.html">Presentes</a></li>
+                <li><a href="">Feedback</a></li>
+                <li><a href="">Contato</a></li>
+                <li><a href=""><img class="perfil" src="image/user-126.svg" alt="" loading="lazy"></a></li>
+                <li><a href="shop.html"><img class="cart" src="image/cart.svg" alt="" loading="lazy"></a></li>
             </ul>
-    
         </nav>
     </header>
 
     <main>
         <section class="slogan">
             <div id="content">
-            
+                <!-- Conteúdo pode ser carregado aqui -->
             </div>
         </section>
 
@@ -57,28 +42,51 @@
             <div id="maior">
                 <div class="container">
                     <div class="row">
-                    <div class="col-md-12 text-center">
-                        <h3 class="animate-charcter"> Ideias <br> Para <br> Presentes</h3>
-                    </div>
+                        <div class="col-md-12 text-center">
+                            <!-- A frase animada de caracteres -->
+                            <h3 class="animate-charcter">
+                                <span>I</span>
+                                <span>d</span>
+                                <span>e</span>
+                                <span>i</span>
+                                <span>a</span>
+                                <span>s</span>
+                                <br>
+                                <span>P</span>
+                                <span>a</span>
+                                <span>r</span>
+                                <span>a</span>
+                                <br>
+                                <span>P</span>
+                                <span>r</span>
+                                <span>e</span>
+                                <span>s</span>
+                                <span>e</span>
+                                <span>n</span>
+                                <span>t</span>
+                                <span>e</span>
+                                <span>s</span>
+                            </h3>
+                        </div>
                     </div>
                 </div>  
-                <p>explore a diversidade e aumente sua criatividade</p>
+                <p>Explore a diversidade e aumente sua criatividade</p>
                 <button><span><a href="presentes.html">Ver mais</a></span></button>
             </div>
-        <div class="coluna">
-            <div class="menor">
-                <h4>Mundo colorido</h4>
-              
+
+            <div class="coluna">
+                <div class="menor">
+                    <h4>Mundo colorido</h4>
+                </div>
+                <div class="menor2">
+                    <h4>Canetas fofas</h4>
+                </div>
             </div>
-            <div class="menor2">
-                <h4>Canetas fofas</h4>
-            </div>
-        </div>
         </section>
 
         <footer>
             <ul>
-                <h5>Mapa de usuario</h5>
+                <h5>Mapa de usuário</h5>
                 <li>Escritas</li>
                 <li>Canetas</li>
                 <li>Presentes</li>
@@ -103,11 +111,18 @@
     </main>
 
     <script>
-        pens = document.querySelector(".pens");
-        pens.onclick = function(){
-            navBar = document.querySelector(".nav_bar")
-            navBar.classList.toggle("active")
+        // Ativar o menu mobile
+        const pens = document.querySelector(".pens");
+        pens.onclick = function() {
+            const navBar = document.querySelector(".nav_bar");
+            navBar.classList.toggle("active");
         }
+
+        // Lazy load de imagens para maior desempenho
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        images.forEach(img => {
+            img.src = img.dataset.src;  // Troca a URL para a versão carregada
+        });
     </script>
 </body>
 </html>
