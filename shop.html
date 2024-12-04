@@ -6,64 +6,159 @@
     <title>Carrinho de Compras</title>
     <link rel="stylesheet" href="presente.css">
     <style>
-        /* Estilo para diminuir o tamanho das imagens */
-        .cart-item img {
-            width: 80px; /* Ajuste o tamanho da imagem conforme necessário */
-            height: auto;
+        /* Estilo geral da página */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F0CFC5;
+            margin: 0;
+            padding: 0;
         }
+
+        header {
+            background-color: #F0CFC5;
+            padding: 10px 20px;
+            color: white;
+            text-align: center;
+        }
+
+        header .logo a {
+            color: #943E3F;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        .nav_bar ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .nav_bar ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        .nav_bar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Estilo do carrinho */
+        .cart-container {
+            background-color: white;
+            padding: 20px;
+            margin: 30px auto;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 28px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #333;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
         .cart-item {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            background-color: #fafafa;
         }
+
+        .cart-item img {
+            width: 80px;
+            height: auto;
+            border-radius: 10px;
+        }
+
         .item-details {
             margin-left: 20px;
+            flex-grow: 1;
         }
+
         .item-details h3 {
             margin: 0;
             font-size: 18px;
+            color: #333;
         }
+
         .item-details p {
             margin: 5px 0;
+            font-size: 14px;
+            color: #555;
         }
+
         .item-actions {
             margin-left: 20px;
             display: flex;
             flex-direction: column;
         }
+
         .item-actions button {
-            padding: 5px 10px;
+            padding: 8px 15px;
             margin: 5px 0;
             cursor: pointer;
+            background-color: #FF86C8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.3s;
         }
+
+        .item-actions button:hover {
+            background-color: #FE5FA0;
+        }
+
         .empty-cart-message {
             text-align: center;
             font-size: 18px;
             margin-top: 20px;
             color: #ff0000;
         }
+
+        /* Botões de ação */
         .finalize-purchase-button,
         .back-to-present-button {
             display: block;
             width: 100%;
-            padding: 10px;
-            margin-top: 20px;
-            background-color: #28a745;
+            padding: 15px;
+            margin-top: 30px;
+            background-color: #ffda3d;
             color: white;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
+            transition: background-color 0.3s;
         }
-        .finalize-purchase-button:hover,
-        .back-to-present-button:hover {
-            background-color: #218838;
+
+        .finalize-purchase-button:hover {
+            background-color: #fdbe39;
         }
+
         .back-to-present-button {
-            background-color: #007bff;
+            background-color: #FF86C8;
         }
+
         .back-to-present-button:hover {
-            background-color: #0056b3;
+            background-color: #FE5FA0;
         }
+
     </style>
 </head>
 <body>
